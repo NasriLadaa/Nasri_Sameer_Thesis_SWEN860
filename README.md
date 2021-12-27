@@ -3,7 +3,7 @@
 To complete the requirement for the Master of Software Engineering program at Birzeit University, these classifications are part of the master’s thesis preparation, so please help with this work.
 
 # Supervisor: Dr. Abualseoud Hanani
-#Student name: Nasri Ladaa
+# Student name: Nasri Ladaa
 
 # Usability
 Degree to which a product or system can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use. Example: ”I have to navigate into three pages before reach my appointment page”
