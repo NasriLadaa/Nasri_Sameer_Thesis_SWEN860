@@ -1,0 +1,794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SWENModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="Appld" />
+          </Key>
+          <Property Name="Appld" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="AppLink" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AppSource" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Matches">
+          <Key>
+            <PropertyRef Name="MatchId" />
+          </Key>
+          <Property Name="MatchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HomeTeamId" Type="int" Nullable="false" />
+          <Property Name="AwayTeamId" Type="int" Nullable="false" />
+          <Property Name="HomeTeamGoals" Type="int" />
+          <Property Name="AwayTeamGoals" Type="int" />
+          <Property Name="MatchDate" Type="datetime" Nullable="false" />
+          <Property Name="MatchStadium" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NonFuncationalRequirment">
+          <Key>
+            <PropertyRef Name="NonFuncationalRequirmentID" />
+          </Key>
+          <Property Name="NonFuncationalRequirmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NonFuncationalRequirment" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="participant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="40" Nullable="false" />
+          <Property Name="Experience" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Results">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserReviewId" Type="int" Nullable="false" />
+          <Property Name="NonFuncationalReqID" Type="int" Nullable="false" />
+          <Property Name="ParticipantId" Type="int" Nullable="false" />
+          <Property Name="UserReviewDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sheet1$">
+          <Key>
+            <PropertyRef Name="UserReviewId" />
+          </Key>
+          <Property Name="UserReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserReviewName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserReviewDate" Type="datetime" Nullable="false" />
+          <Property Name="UserReviewRating" Type="int" Nullable="false" />
+          <Property Name="UserReviewDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserReviewAppCategory" Type="int" Nullable="false" />
+          <Property Name="UserReviewUse" Type="bit" Nullable="false" />
+          <Property Name="UserReviewAnswerd" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="TeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="varchar(max)" Nullable="false" />
+          <Property Name="TeamIcon" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamTournament">
+          <Key>
+            <PropertyRef Name="TeamTournamentId" />
+          </Key>
+          <Property Name="TeamTournamentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+          <Property Name="TournamentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tournaments">
+          <Key>
+            <PropertyRef Name="TournamentId" />
+          </Key>
+          <Property Name="TournamentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TournamentName" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserGUIDId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserPassword" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserFirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserLastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserHometown" Type="nvarchar(max)" />
+          <Property Name="UserPhoneNumber" Type="nvarchar(max)" />
+          <Property Name="UserEmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserEmailConfirmation" Type="bit" Nullable="false" />
+          <Property Name="UserCreationDate" Type="datetime" Nullable="false" />
+          <Property Name="UserActivation" Type="bit" Nullable="false" />
+          <Property Name="UserProfilePhoto" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserRate" Type="float" Nullable="false" />
+          <Property Name="UserBio" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UsersReviews">
+          <Key>
+            <PropertyRef Name="UserReviewId" />
+          </Key>
+          <Property Name="UserReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserReviewName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserReviewDate" Type="datetime" Nullable="false" />
+          <Property Name="UserReviewRating" Type="int" Nullable="false" />
+          <Property Name="UserReviewDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserReviewAppCategory" Type="int" Nullable="false" />
+          <Property Name="UserReviewUse" Type="bit" Nullable="false" />
+          <Property Name="UserReviewAnswerd" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Applications_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_NonFuncationalRequirment">
+          <End Role="NonFuncationalRequirment" Type="Self.NonFuncationalRequirment" Multiplicity="1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonFuncationalRequirment">
+              <PropertyRef Name="NonFuncationalRequirmentID" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="NonFuncationalReqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Results">
+          <End Role="participant" Type="Self.participant" Multiplicity="1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="participant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="ParticipantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_UsersReviews">
+          <End Role="UsersReviews" Type="Self.UsersReviews" Multiplicity="1" />
+          <End Role="Results" Type="Self.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersReviews">
+              <PropertyRef Name="UserReviewId" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="UserReviewId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sheet1$_Sheet1$">
+          <End Role="Sheet1$" Type="Self.Sheet1$" Multiplicity="1" />
+          <End Role="Sheet1$1" Type="Self.Sheet1$" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sheet1$">
+              <PropertyRef Name="UserReviewId" />
+            </Principal>
+            <Dependent Role="Sheet1$1">
+              <PropertyRef Name="UserReviewId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamId_AwayTeamId">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="Matches" Type="Self.Matches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="Matches">
+              <PropertyRef Name="AwayTeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamId_HomeTeamId">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="Matches" Type="Self.Matches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="Matches">
+              <PropertyRef Name="HomeTeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamId_TeamTournamentId">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="TeamTournament" Type="Self.TeamTournament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="TeamTournament">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamTournament_Tournaments">
+          <End Role="Tournaments" Type="Self.Tournaments" Multiplicity="1" />
+          <End Role="TeamTournament" Type="Self.TeamTournament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tournaments">
+              <PropertyRef Name="TournamentId" />
+            </Principal>
+            <Dependent Role="TeamTournament">
+              <PropertyRef Name="TournamentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersReviews_Applications">
+          <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
+          <End Role="UsersReviews" Type="Self.UsersReviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="Appld" />
+            </Principal>
+            <Dependent Role="UsersReviews">
+              <PropertyRef Name="UserReviewAppCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SWENModelStoreContainer">
+          <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Matches" EntityType="Self.Matches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NonFuncationalRequirment" EntityType="Self.NonFuncationalRequirment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="participant" EntityType="Self.participant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sheet1$" EntityType="Self.Sheet1$" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamTournament" EntityType="Self.TeamTournament" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tournaments" EntityType="Self.Tournaments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersReviews" EntityType="Self.UsersReviews" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Applications_Category" Association="Self.FK_Applications_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_NonFuncationalRequirment" Association="Self.FK_Results_NonFuncationalRequirment">
+            <End Role="NonFuncationalRequirment" EntitySet="NonFuncationalRequirment" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Results" Association="Self.FK_Results_Results">
+            <End Role="participant" EntitySet="participant" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_UsersReviews" Association="Self.FK_Results_UsersReviews">
+            <End Role="UsersReviews" EntitySet="UsersReviews" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sheet1$_Sheet1$" Association="Self.FK_Sheet1$_Sheet1$">
+            <End Role="Sheet1$" EntitySet="Sheet1$" />
+            <End Role="Sheet1$1" EntitySet="Sheet1$" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamId_AwayTeamId" Association="Self.FK_TeamId_AwayTeamId">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Matches" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamId_HomeTeamId" Association="Self.FK_TeamId_HomeTeamId">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Matches" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamId_TeamTournamentId" Association="Self.FK_TeamId_TeamTournamentId">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="TeamTournament" EntitySet="TeamTournament" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamTournament_Tournaments" Association="Self.FK_TeamTournament_Tournaments">
+            <End Role="Tournaments" EntitySet="Tournaments" />
+            <End Role="TeamTournament" EntitySet="TeamTournament" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersReviews_Applications" Association="Self.FK_UsersReviews_Applications">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="UsersReviews" EntitySet="UsersReviews" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SWENModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Appld" />
+          </Key>
+          <Property Name="Appld" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="AppLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AppSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Applications_Category" FromRole="Applications" ToRole="Category" />
+          <NavigationProperty Name="UsersReviews" Relationship="Self.FK_UsersReviews_Applications" FromRole="Applications" ToRole="UsersReviews" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_Category" FromRole="Category" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="Match">
+          <Key>
+            <PropertyRef Name="MatchId" />
+          </Key>
+          <Property Name="MatchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HomeTeamId" Type="Int32" Nullable="false" />
+          <Property Name="AwayTeamId" Type="Int32" Nullable="false" />
+          <Property Name="HomeTeamGoals" Type="Int32" />
+          <Property Name="AwayTeamGoals" Type="Int32" />
+          <Property Name="MatchDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MatchStadium" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_TeamId_AwayTeamId" FromRole="Matches" ToRole="Teams" />
+          <NavigationProperty Name="Team1" Relationship="Self.FK_TeamId_HomeTeamId" FromRole="Matches" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="NonFuncationalRequirment">
+          <Key>
+            <PropertyRef Name="NonFuncationalRequirmentID" />
+          </Key>
+          <Property Name="NonFuncationalRequirmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NonFuncationalRequirment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Results" Relationship="Self.FK_Results_NonFuncationalRequirment" FromRole="NonFuncationalRequirment" ToRole="Results" />
+        </EntityType>
+        <EntityType Name="participant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Experience" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Results" Relationship="Self.FK_Results_Results" FromRole="participant" ToRole="Results" />
+        </EntityType>
+        <EntityType Name="Result">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserReviewId" Type="Int32" Nullable="false" />
+          <Property Name="NonFuncationalReqID" Type="Int32" Nullable="false" />
+          <Property Name="ParticipantId" Type="Int32" Nullable="false" />
+          <Property Name="UserReviewDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="NonFuncationalRequirment" Relationship="Self.FK_Results_NonFuncationalRequirment" FromRole="Results" ToRole="NonFuncationalRequirment" />
+          <NavigationProperty Name="participant" Relationship="Self.FK_Results_Results" FromRole="Results" ToRole="participant" />
+          <NavigationProperty Name="UsersReview" Relationship="Self.FK_Results_UsersReviews" FromRole="Results" ToRole="UsersReviews" />
+        </EntityType>
+        <EntityType Name="Sheet1_">
+          <Key>
+            <PropertyRef Name="UserReviewId" />
+          </Key>
+          <Property Name="UserReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserReviewName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserReviewDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserReviewRating" Type="Int32" Nullable="false" />
+          <Property Name="UserReviewDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserReviewAppCategory" Type="Int32" Nullable="false" />
+          <Property Name="UserReviewUse" Type="Boolean" Nullable="false" />
+          <Property Name="UserReviewAnswerd" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Sheet1_1" Relationship="Self.FK_Sheet1__Sheet1_" FromRole="Sheet1_" ToRole="Sheet1_1" />
+          <NavigationProperty Name="Sheet1_2" Relationship="Self.FK_Sheet1__Sheet1_" FromRole="Sheet1_1" ToRole="Sheet1_" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="TeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeamIcon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Matches" Relationship="Self.FK_TeamId_AwayTeamId" FromRole="Teams" ToRole="Matches" />
+          <NavigationProperty Name="Matches1" Relationship="Self.FK_TeamId_HomeTeamId" FromRole="Teams" ToRole="Matches" />
+          <NavigationProperty Name="TeamTournaments" Relationship="Self.FK_TeamId_TeamTournamentId" FromRole="Teams" ToRole="TeamTournament" />
+        </EntityType>
+        <EntityType Name="TeamTournament">
+          <Key>
+            <PropertyRef Name="TeamTournamentId" />
+          </Key>
+          <Property Name="TeamTournamentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <Property Name="TournamentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_TeamId_TeamTournamentId" FromRole="TeamTournament" ToRole="Teams" />
+          <NavigationProperty Name="Tournament" Relationship="Self.FK_TeamTournament_Tournaments" FromRole="TeamTournament" ToRole="Tournaments" />
+        </EntityType>
+        <EntityType Name="Tournament">
+          <Key>
+            <PropertyRef Name="TournamentId" />
+          </Key>
+          <Property Name="TournamentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TournamentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TeamTournaments" Relationship="Self.FK_TeamTournament_Tournaments" FromRole="Tournaments" ToRole="TeamTournament" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserGUIDId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserFirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserLastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserHometown" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserPhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserEmailConfirmation" Type="Boolean" Nullable="false" />
+          <Property Name="UserCreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserActivation" Type="Boolean" Nullable="false" />
+          <Property Name="UserProfilePhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserRate" Type="Double" Nullable="false" />
+          <Property Name="UserBio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UsersReview">
+          <Key>
+            <PropertyRef Name="UserReviewId" />
+          </Key>
+          <Property Name="UserReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserReviewName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserReviewDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserReviewRating" Type="Int32" Nullable="false" />
+          <Property Name="UserReviewDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserReviewAppCategory" Type="Int32" Nullable="false" />
+          <Property Name="UserReviewUse" Type="Boolean" Nullable="false" />
+          <Property Name="UserReviewAnswerd" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_UsersReviews_Applications" FromRole="UsersReviews" ToRole="Applications" />
+          <NavigationProperty Name="Results" Relationship="Self.FK_Results_UsersReviews" FromRole="UsersReviews" ToRole="Results" />
+        </EntityType>
+        <Association Name="FK_Applications_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersReviews_Applications">
+          <End Role="Applications" Type="Self.Application" Multiplicity="1" />
+          <End Role="UsersReviews" Type="Self.UsersReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="Appld" />
+            </Principal>
+            <Dependent Role="UsersReviews">
+              <PropertyRef Name="UserReviewAppCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamId_AwayTeamId">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="Matches" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="Matches">
+              <PropertyRef Name="AwayTeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamId_HomeTeamId">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="Matches" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="Matches">
+              <PropertyRef Name="HomeTeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_NonFuncationalRequirment">
+          <End Role="NonFuncationalRequirment" Type="Self.NonFuncationalRequirment" Multiplicity="1" />
+          <End Role="Results" Type="Self.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonFuncationalRequirment">
+              <PropertyRef Name="NonFuncationalRequirmentID" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="NonFuncationalReqID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Results">
+          <End Role="participant" Type="Self.participant" Multiplicity="1" />
+          <End Role="Results" Type="Self.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="participant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="ParticipantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_UsersReviews">
+          <End Role="UsersReviews" Type="Self.UsersReview" Multiplicity="1" />
+          <End Role="Results" Type="Self.Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersReviews">
+              <PropertyRef Name="UserReviewId" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="UserReviewId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sheet1__Sheet1_">
+          <End Role="Sheet1_" Type="Self.Sheet1_" Multiplicity="1" />
+          <End Role="Sheet1_1" Type="Self.Sheet1_" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sheet1_">
+              <PropertyRef Name="UserReviewId" />
+            </Principal>
+            <Dependent Role="Sheet1_1">
+              <PropertyRef Name="UserReviewId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamId_TeamTournamentId">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="TeamTournament" Type="Self.TeamTournament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="TeamTournament">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamTournament_Tournaments">
+          <End Role="Tournaments" Type="Self.Tournament" Multiplicity="1" />
+          <End Role="TeamTournament" Type="Self.TeamTournament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tournaments">
+              <PropertyRef Name="TournamentId" />
+            </Principal>
+            <Dependent Role="TeamTournament">
+              <PropertyRef Name="TournamentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SWENEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applications" EntityType="Self.Application" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Matches" EntityType="Self.Match" />
+          <EntitySet Name="NonFuncationalRequirments" EntityType="Self.NonFuncationalRequirment" />
+          <EntitySet Name="participants" EntityType="Self.participant" />
+          <EntitySet Name="Results" EntityType="Self.Result" />
+          <EntitySet Name="Sheet1_" EntityType="Self.Sheet1_" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <EntitySet Name="TeamTournaments" EntityType="Self.TeamTournament" />
+          <EntitySet Name="Tournaments" EntityType="Self.Tournament" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UsersReviews" EntityType="Self.UsersReview" />
+          <AssociationSet Name="FK_Applications_Category" Association="Self.FK_Applications_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersReviews_Applications" Association="Self.FK_UsersReviews_Applications">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="UsersReviews" EntitySet="UsersReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamId_AwayTeamId" Association="Self.FK_TeamId_AwayTeamId">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Matches" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamId_HomeTeamId" Association="Self.FK_TeamId_HomeTeamId">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Matches" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_NonFuncationalRequirment" Association="Self.FK_Results_NonFuncationalRequirment">
+            <End Role="NonFuncationalRequirment" EntitySet="NonFuncationalRequirments" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Results" Association="Self.FK_Results_Results">
+            <End Role="participant" EntitySet="participants" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_UsersReviews" Association="Self.FK_Results_UsersReviews">
+            <End Role="UsersReviews" EntitySet="UsersReviews" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sheet1__Sheet1_" Association="Self.FK_Sheet1__Sheet1_">
+            <End Role="Sheet1_" EntitySet="Sheet1_" />
+            <End Role="Sheet1_1" EntitySet="Sheet1_" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamId_TeamTournamentId" Association="Self.FK_TeamId_TeamTournamentId">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="TeamTournament" EntitySet="TeamTournaments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamTournament_Tournaments" Association="Self.FK_TeamTournament_Tournaments">
+            <End Role="Tournaments" EntitySet="Tournaments" />
+            <End Role="TeamTournament" EntitySet="TeamTournaments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SWENModelStoreContainer" CdmEntityContainer="SWENEntities1">
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="SWENModel.Application">
+              <MappingFragment StoreEntitySet="Applications">
+                <ScalarProperty Name="Appld" ColumnName="Appld" />
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="AppLink" ColumnName="AppLink" />
+                <ScalarProperty Name="AppSource" ColumnName="AppSource" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="SWENModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Matches">
+            <EntityTypeMapping TypeName="SWENModel.Match">
+              <MappingFragment StoreEntitySet="Matches">
+                <ScalarProperty Name="MatchId" ColumnName="MatchId" />
+                <ScalarProperty Name="HomeTeamId" ColumnName="HomeTeamId" />
+                <ScalarProperty Name="AwayTeamId" ColumnName="AwayTeamId" />
+                <ScalarProperty Name="HomeTeamGoals" ColumnName="HomeTeamGoals" />
+                <ScalarProperty Name="AwayTeamGoals" ColumnName="AwayTeamGoals" />
+                <ScalarProperty Name="MatchDate" ColumnName="MatchDate" />
+                <ScalarProperty Name="MatchStadium" ColumnName="MatchStadium" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonFuncationalRequirments">
+            <EntityTypeMapping TypeName="SWENModel.NonFuncationalRequirment">
+              <MappingFragment StoreEntitySet="NonFuncationalRequirment">
+                <ScalarProperty Name="NonFuncationalRequirmentID" ColumnName="NonFuncationalRequirmentID" />
+                <ScalarProperty Name="NonFuncationalRequirment1" ColumnName="NonFuncationalRequirment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="participants">
+            <EntityTypeMapping TypeName="SWENModel.participant">
+              <MappingFragment StoreEntitySet="participant">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="SWENModel.Result">
+              <MappingFragment StoreEntitySet="Results">
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="UserReviewId" ColumnName="UserReviewId" />
+                <ScalarProperty Name="NonFuncationalReqID" ColumnName="NonFuncationalReqID" />
+                <ScalarProperty Name="ParticipantId" ColumnName="ParticipantId" />
+                <ScalarProperty Name="UserReviewDateTime" ColumnName="UserReviewDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sheet1_">
+            <EntityTypeMapping TypeName="SWENModel.Sheet1_">
+              <MappingFragment StoreEntitySet="Sheet1$">
+                <ScalarProperty Name="UserReviewId" ColumnName="UserReviewId" />
+                <ScalarProperty Name="UserReviewName" ColumnName="UserReviewName" />
+                <ScalarProperty Name="UserReviewDate" ColumnName="UserReviewDate" />
+                <ScalarProperty Name="UserReviewRating" ColumnName="UserReviewRating" />
+                <ScalarProperty Name="UserReviewDescription" ColumnName="UserReviewDescription" />
+                <ScalarProperty Name="UserReviewAppCategory" ColumnName="UserReviewAppCategory" />
+                <ScalarProperty Name="UserReviewUse" ColumnName="UserReviewUse" />
+                <ScalarProperty Name="UserReviewAnswerd" ColumnName="UserReviewAnswerd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="SWENModel.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="TeamIcon" ColumnName="TeamIcon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamTournaments">
+            <EntityTypeMapping TypeName="SWENModel.TeamTournament">
+              <MappingFragment StoreEntitySet="TeamTournament">
+                <ScalarProperty Name="TeamTournamentId" ColumnName="TeamTournamentId" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="TournamentId" ColumnName="TournamentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tournaments">
+            <EntityTypeMapping TypeName="SWENModel.Tournament">
+              <MappingFragment StoreEntitySet="Tournaments">
+                <ScalarProperty Name="TournamentId" ColumnName="TournamentId" />
+                <ScalarProperty Name="TournamentName" ColumnName="TournamentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SWENModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserGUIDId" ColumnName="UserGUIDId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+                <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+                <ScalarProperty Name="UserHometown" ColumnName="UserHometown" />
+                <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserEmailConfirmation" ColumnName="UserEmailConfirmation" />
+                <ScalarProperty Name="UserCreationDate" ColumnName="UserCreationDate" />
+                <ScalarProperty Name="UserActivation" ColumnName="UserActivation" />
+                <ScalarProperty Name="UserProfilePhoto" ColumnName="UserProfilePhoto" />
+                <ScalarProperty Name="UserRate" ColumnName="UserRate" />
+                <ScalarProperty Name="UserBio" ColumnName="UserBio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersReviews">
+            <EntityTypeMapping TypeName="SWENModel.UsersReview">
+              <MappingFragment StoreEntitySet="UsersReviews">
+                <ScalarProperty Name="UserReviewId" ColumnName="UserReviewId" />
+                <ScalarProperty Name="UserReviewName" ColumnName="UserReviewName" />
+                <ScalarProperty Name="UserReviewDate" ColumnName="UserReviewDate" />
+                <ScalarProperty Name="UserReviewRating" ColumnName="UserReviewRating" />
+                <ScalarProperty Name="UserReviewDescription" ColumnName="UserReviewDescription" />
+                <ScalarProperty Name="UserReviewAppCategory" ColumnName="UserReviewAppCategory" />
+                <ScalarProperty Name="UserReviewUse" ColumnName="UserReviewUse" />
+                <ScalarProperty Name="UserReviewAnswerd" ColumnName="UserReviewAnswerd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

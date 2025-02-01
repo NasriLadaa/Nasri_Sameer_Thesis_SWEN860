@@ -1,0 +1,168 @@
+﻿@model Nasrisite.Models.UsersReview
+
+@{
+    ViewBag.Title = "Classification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Answer", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><h1>Labeling Users reviews </h1></div>
+        <div class="panel-body">
+            <div class="alert alert-info">
+                <div class="col-md-6">
+                    Participant Email: <strong>@ViewBag.ParticipantEmail</strong>
+                </div>
+                <div class="col-md-6">
+                    Participant user reviews classifed : <strong>@ViewBag.NoOfComments</strong>
+                </div>
+                <br />
+            </div>
+            @{
+                if (!string.IsNullOrEmpty(@ViewBag.message))
+                {
+                    <div class="alert alert-success">@ViewBag.message</div>
+                }
+            }
+
+            <table class="table table-bordered table-responsive">
+                <thead style="font-weight:bold">
+                    <tr>
+                        <td style="width:49%"> User Review</td>
+                        <td style="width:29%"> Classification </td>
+                        <td style="width:19%"> Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <p> @Html.DisplayFor(model => model.UserReviewId) (@Html.DisplayFor(model => model.Application.AppName)) :- @Html.DisplayFor(model => model.UserReviewDescription)</p>
+                            </div>
+
+                            <input type="hidden" name="UserReviewId" value="@ViewBag.UserReviewId" />
+                            <input type="hidden" name="ParticipantID" value="@ViewBag.ParticipantID" />
+
+
+                        </td>
+                        <td>
+
+                            <div class="form-group">
+                                
+                                    @foreach (var c in ViewBag.NonFuncationalRequirments)
+                                    {
+                                        <input type="radio" name="NonFuncationalRequirment1" value=@c.NonFuncationalRequirmentID />
+                                        <label for="NonFuncationalRequirmentName"> @c.NonFuncationalRequirment1</label>
+                                        <br>
+
+                                    }
+                                
+                            </div>
+                       
+                          
+
+                        </td>
+                        <td>
+                            <div class="form-group col-md-6">
+
+                                <input type="submit" value="Save" class="btn btn-success" />
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+
+                                <input type="button" value="Skip" class="btn btn-danger" onclick="@("location.href='" + Url.Action("Classification", "Home")+ "'")" />
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="panel panel-footer">
+                <p class="text-danger"> Notes:</p>
+                <ul>
+                    <li> If the user reviews text not appear, please click on the skip, to get a new one.</li>
+                    <li> If you are not certain of the user review type, you can skip it.</li>
+                    <li> Please try to classify as you can, and try to not less than 20 user review. </li>
+                </ul>
+
+                <p class="text-danger">Definition:</p>
+
+                <h4> Usability</h4>
+                <p class="text-justify">
+                    Degree to which a product or system can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use.
+                    <b>Example: ”I have to navigate into three pages before reach my appointment page”</b>
+                </p>
+                <br />
+
+                <h4>Reliability</h4>
+                <p class="text-justify">
+                    Degree to which a system, product or component performs specified functions under specified conditions for a specified period of time.
+                    <b>Example: “After clicking on start call button the app crashes”</b>
+                </p>
+
+                <br />
+
+                <h4> Portability</h4>
+                <p class="text-justify">
+                    Degree of effectiveness and efficiency with which a system, product or component can be transferred from one hardware, software or other operational or usage environment to another.
+                    <b>Example: “On my tablet it worked fine but on the phone nothing appeared”</b>
+                </p>
+
+                <br />
+
+                <h4>Performance</h4>
+                <p class="text-justify">
+                    Performance relative to the amount of resources used under stated conditions.
+                    <b>Example:“ I have to wait 10 seconds to see all my notifications”</b>
+                </p>
+              
+                <br />
+
+                <h4>Learnability</h4>
+                <p class="text-justify">
+                    Degree to which a product or system can be used by specified users to achieve specified goals of learning to use the product or system with effectiveness, efficiency, freedom from risk and satisfaction in a specified context of use.
+                    <b>Example:“I used many similar apps all of them have quick tutorial to get started”</b>
+                </p>
+
+                <br />
+
+                <h4>Compatibility</h4>
+                <p class="text-justify">
+                    Degree to which a product, system or component can exchange information with other products, systems or components, and/or perform its required functions, while sharing the same hardware or software environment.
+                    <b>Example:“My live match are not synced with FIFA official schedule”</b>
+                </p>
+
+                <br />
+
+                <h4>Security</h4>
+                <p class="text-justify">
+                    Degree to which a product or system protects information and data so that persons or other products or systems have the degree of data access appropriate to their types and levels of authorization.
+                    <b>Example:“This app allow weak password”</b>
+                </p>
+
+                <br />
+
+                <h4>Functional Requirements</h4>
+                <p class="text-justify">
+                    Things that system shall allow, be able to do, may be able to do.  <b>Example:“Can you add Call ambulance button so we can make emergency calls faster”</b>
+                </p>
+
+                <br />
+
+                <h4>Others</h4>
+                <p class="text-justify">
+                    Include emotional expressions and not related functional or nonfunctional requirements.
+                    <b>Example:“Cool”, “I like this App, Very Good App, Bad Company”</b>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+                }
