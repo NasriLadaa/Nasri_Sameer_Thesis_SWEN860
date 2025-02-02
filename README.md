@@ -46,15 +46,15 @@ For more details you can refer to :
 
 [4] International Organization for Standardization, 2016. Systems and Software Engineering: Systems and Software Quality Requirements and Evaluation (SQuaRE): Measurement of System and Software Product Quality. ISO.
 
-<br>
-<img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/web_1.png" alt="Screen1" width="800" height="600" />
+<br><br>
+<img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/web-img-1.png" alt="Screen1" width="900" height="600" />
 
-<br>
-<img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/web_2.png" alt="Screen2" width="800" height="600"/>
+<br><br>
+<img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/web-img-2.png" alt="Screen2" width="900" height="600"/>
 
-<br>
-<img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/web-3.png" alt="Screen3" width="800" height="600"/>
+<br><br>
+<img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/web-img-3.png" alt="Screen3" width="900" height="600"/>
 
-<br>
-<img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/web_4.png" alt="Screen" width="800" height="600"/>
+<br><br>
+<img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/web-img-4.png" alt="Screen" width="900" height="600"/>
 
