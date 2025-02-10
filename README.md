@@ -17,7 +17,6 @@ The application allows users to manually classify, label, and annotate these rev
 ### Technologies
 - ![Database](https://img.shields.io/badge/-Database-lightgrey?logo=database) Databases:
     - SQL Databases: SQL Server
-    - NoSQL Databases: MongoDB
 - ![AWS](https://img.shields.io/badge/-AWS-orange?logo=aws) Cloud Services: AWS (EC2, SES, Elastic IP, Security Groups)
 - ![DotNet](https://img.shields.io/badge/-DotNet-blue?logo=.net) Development Frameworks:
     - .NET Framework
