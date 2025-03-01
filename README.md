@@ -100,6 +100,6 @@ For more details you can refer to :
 <img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/web-img-4.png" alt="Screen" width="900" height="600"/>
 
 <br><br>
-#### Start classification
-<img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/erd.png" alt="Screen" width="900" height="600"/>
+#### ERD
+<img src="https://github.com/NasriLadaa/Nasri_Sameer_Thesis_SWEN860/blob/main/imgs/erd.png" alt="Screen" width="600" height="700"/>
 
